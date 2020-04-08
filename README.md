@@ -49,7 +49,7 @@ This is online app to rent your car
 
 ```
    cd /opt/
-   sudo wget http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.51/bin/apache-tomcat-8.5.51.tar.gz
+   sudo wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.53/bin/apache-tomcat-8.5.53.tar.gz
    sudo tar -xf apache-tomcat-8.5.51.tar.gz
    sudo mv apache-tomcat-8.5.51 tomcat8
    sudo chown -R ec2-user:ec2-user tomcat8/
