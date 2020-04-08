@@ -48,13 +48,14 @@ This is online app to rent your car
 ### Install Tomcat8 on Linux
 
 ```
+   sudo yum install java-1.8.0-openjdk -y
    cd /opt/
    sudo wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.53/bin/apache-tomcat-8.5.53.tar.gz
-   sudo tar -xf apache-tomcat-8.5.51.tar.gz
-   sudo mv apache-tomcat-8.5.51 tomcat8
+   sudo tar xf apache-tomcat-8.5.53.tar.gz
+   sudo rm apache-tomcat-8.5.53.tar.gz
+   sudo mv apache-tomcat-8.5.53/ tomcat8
    sudo chown -R ec2-user:ec2-user tomcat8/
    
-   sudo yum install java-1.8.0-openjdk -y
 ```
 #### Manage tomcat
 ```
