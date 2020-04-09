@@ -27,9 +27,9 @@ This is online app to rent your car
 ```
 #### Start/Stop/Restart Nexus server
 ```
-  /opt/nexus3/bin/nuxus start
-  /opt/nexus3/bin/nuxus stop
-  /opt/nexus3/bin/nuxus restart
+  /opt/nexus3/bin/nexus start
+  /opt/nexus3/bin/nexus stop
+  /opt/nexus3/bin/nexus restart
 ```
 
 #### Configure Nexus as Service
