@@ -82,6 +82,13 @@ Execute following commands to complete the process
    sudo chkconfig --levels 345 tomcat on
 
 ```
+
+Start and Stop tomcat
+
+```
+service tomcat start
+service tomcat stop
+```
 ### Install Jenkins on Linux
 
 ```
