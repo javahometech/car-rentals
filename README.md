@@ -63,6 +63,25 @@ This is online app to rent your car
     /opt/tomcat8/bin/shutdown.sh 
 ```
 
+#### Runtomcat as a Service
+```
+    sudo ln -s /opt/tomcat8/bin/catalina.sh /etc/init.d/tomcat
+```
+open tomcat script
+```
+   sudo vi /etc/init.d/tomcat
+```
+In the above script place the following line at line number 2
+```
+   #chkconfig: 345 99 01
+```
+Execute following commands to complete the process
+
+```
+   sudo chkconfig --add tomcat
+   sudo chkconfig --levels 345 tomcat on
+
+```
 ### Install Jenkins on Linux
 
 ```
