@@ -11,7 +11,7 @@ phases:
       - echo Build completed successfully
 artifacts:
   files:
-    - target/car-rentals*.war
+    - target/car-rentals*/*
   discard-paths: yes
 
 cache:
