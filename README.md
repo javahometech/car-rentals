@@ -99,7 +99,7 @@ service tomcat stop
    
    sudo chkconfig jenkins on
    
-   sudo service jenkkins start
+   sudo service jenkins start
    
 ```
 
@@ -132,5 +132,7 @@ RUN_AS_USER="ec2-user"
    sudo service docker start
    // exit and login again
 ```
+
+
 
 
