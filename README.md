@@ -9,7 +9,7 @@ This is online app to rent your car
 ```
   mvn archetype:generate 
 	-DgroupId=in.javahome
-	-DartifactId=pets-app
+	-DartifactId=car-rentals
 	-DarchetypeArtifactId=maven-archetype-webapp
 	-DinteractiveMode=false
 
