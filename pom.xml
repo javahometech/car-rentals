@@ -20,12 +20,12 @@
   </build>
   <distributionManagement>
 		 <snapshotRepository>
-		    <id>nexus</id>
+		    <id>admin</id>
 		    <url>http://3.16.76.129:8081/repository/car-rentals-snapshot/</url>
 		 </snapshotRepository>
 		
 		<repository>
-		    <id>nexus</id>
+		    <id>admin</id>
 		    <url>http://3.16.76.129:8081/repository/car-rentals-release/</url>
 		</repository>
   	</distributionManagement>
