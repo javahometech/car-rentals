@@ -13,8 +13,8 @@ pipeline{
                 sshagent(['tomcat-dev']) {
                     // copy war file to tomcat dev
                     sh "scp -o StrictHostKeyChecking=no  target/car-rentals*.war  ec2-user@172.31.33.192:/opt/tomcat8/webapps/"
-                    sh "ssh ec2-user@172.31.33.192 service tomcat stop"
-                    sh "ssh ec2-user@172.31.33.192 service tomcat start"
+                    sh "ssh ec2-user@172.31.33.192 /usr/sbin/service tomcat stop"
+                    sh "ssh ec2-user@172.31.33.192 /usr/sbin/service tomcat start"
                 }
             }
         }
