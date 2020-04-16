@@ -26,7 +26,9 @@ pipeline{
     }
     post {
       failure {
-        echo "Send email notifcation"
+        mail body: 'Hi Developer, Your Job failed',
+             subject: 'Job Failed', 
+             to: 'javahome2020@gmail.com'
       }
     }
     
