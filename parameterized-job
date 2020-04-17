@@ -17,18 +17,27 @@ pipeline{
         }
         
         stage('Tomcat Deploy - Dev'){
+            when{
+                expression { params.deployEnv == 'dev' }
+            }
             steps{
                 echo "We are deploying to dev environment with ip ${serversMap[params.deployEnv]}"
             }
         }
         
         stage('Tomcat Deploy - Staging'){
+            when{
+                expression { params.deployEnv == 'stg' }
+            }
             steps{
                 echo "We are deploying to staging environment with ip ${serversMap[params.deployEnv]}"
             }
         }
         
         stage('Tomcat Deploy - Production'){
+            when{
+                expression { params.deployEnv == 'prod' }
+            }
             steps{
                 echo "We are deploying to production environment with ip ${serversMap[params.deployEnv]}"
             }
