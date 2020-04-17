@@ -1,0 +1,23 @@
+pipeline{
+    agent any
+    parameters {
+      choice choices: ['dev', 'test', 'stg', 'prod'], description: 'Choose the app env to deploy', name: 'deployEnv'
+      choice choices: ['develop', 'release', 'master'], description: 'Choose the branch to deploy', name: 'branchName'
+    }
+    stages{
+        
+        stage('Maven Package'){
+            steps{
+                echo "We are building ${params.branchName}"
+            }
+        }
+        
+        stage('Tomcat Deploy'){
+            steps{
+                echo "We are deploying to ${params.branchName} environment"
+            }
+        }
+        
+    }
+    
+}
