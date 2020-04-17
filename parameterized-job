@@ -1,12 +1,12 @@
+serversMap = [dev: "172.13.4.5",stg: "172.13.4.6", prod: "172.13.4.7"]
+
 pipeline{
     agent any
     parameters {
       choice choices: ['dev',  'stg', 'prod'], description: 'Choose the app env to deploy', name: 'deployEnv'
       choice choices: ['develop', 'release', 'master'], description: 'Choose the branch to deploy', name: 'branchName'
     }
-    environment{
-        SERVERS = [dev: "172.13.4.5",stg: "172.13.4.6", prod: "172.13.4.6"]
-    }
+    
     stages{
         
         stage('Maven Package'){
@@ -18,19 +18,19 @@ pipeline{
         
         stage('Tomcat Deploy - Dev'){
             steps{
-                echo "We are deploying to dev environment"
+                echo "We are deploying to dev environment with ip ${serversMap[params.deployEnv]}"
             }
         }
         
         stage('Tomcat Deploy - Staging'){
             steps{
-                echo "We are deploying to staging environment"
+                echo "We are deploying to staging environment with ip ${serversMap[params.deployEnv]}"
             }
         }
         
         stage('Tomcat Deploy - Production'){
             steps{
-                echo "We are deploying to production environment"
+                echo "We are deploying to production environment with ip ${serversMap[params.deployEnv]}"
             }
         }
         
