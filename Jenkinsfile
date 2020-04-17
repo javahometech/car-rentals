@@ -1,3 +1,4 @@
+currentBuild.displayName = "${currentBuild.projectName}-#${currentBuild.number}"
 pipeline{
     agent any
     environment {
@@ -8,7 +9,7 @@ pipeline{
     stages{
         stage('Maven Package and Nexus Deploy'){
             steps{
-                sh script: 'mvn clean deploy hari'
+                sh script: 'mvn clean deploy'
             }
         }
         
