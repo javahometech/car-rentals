@@ -8,7 +8,8 @@ pipeline{
         
         stage('Maven Package'){
             steps{
-                echo "We are building ${params.branchName}"
+                sh "git checkout ${params.develop}"
+                echo "We are building ${params.branchName} branch"
             }
         }
         
