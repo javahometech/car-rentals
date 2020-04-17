@@ -1,8 +1,11 @@
 pipeline{
     agent any
     parameters {
-      choice choices: ['dev', 'test', 'stg', 'prod'], description: 'Choose the app env to deploy', name: 'deployEnv'
+      choice choices: ['dev',  'stg', 'prod'], description: 'Choose the app env to deploy', name: 'deployEnv'
       choice choices: ['develop', 'release', 'master'], description: 'Choose the branch to deploy', name: 'branchName'
+    }
+    environment{
+        SERVERS = [dev: "172.13.4.5",stg: "172.13.4.6", prod: "172.13.4.6"]
     }
     stages{
         
@@ -13,9 +16,21 @@ pipeline{
             }
         }
         
-        stage('Tomcat Deploy'){
+        stage('Tomcat Deploy - Dev'){
             steps{
-                echo "We are deploying to ${params.deployEnv} environment"
+                echo "We are deploying to dev environment"
+            }
+        }
+        
+        stage('Tomcat Deploy - Staging'){
+            steps{
+                echo "We are deploying to staging environment"
+            }
+        }
+        
+        stage('Tomcat Deploy - Production'){
+            steps{
+                echo "We are deploying to production environment"
             }
         }
         
