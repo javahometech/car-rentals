@@ -26,8 +26,8 @@ pipeline{
     }
     post {
       failure {
-        mail body: 'Hi Developer, Your Job failed',
-             subject: 'Job Failed', 
+          mail body: "Hi Developer, Your ${env.JOB_NAME} Job failed, This is your build URL ${env.BUILD_URL}",
+            subject: "${env.JOB_NAME} - Failed", 
              to: 'javahome2020@gmail.com'
       }
     }
