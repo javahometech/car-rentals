@@ -15,7 +15,7 @@ pipeline{
         
         stage('Tomcat Deploy'){
             steps{
-                echo "We are deploying to ${params.branchName} environment"
+                echo "We are deploying to ${params.deployEnv} environment"
             }
         }
         
