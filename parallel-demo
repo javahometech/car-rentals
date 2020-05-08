@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    stages{
+        stage('Builds') {
+          steps {
+            parallel(
+              dbbuild: {
+                echo "maven build"
+              },
+              appbuild: {
+                echo "sonar analysis"
+              }
+            )
+          }
+        }
+    }
+}

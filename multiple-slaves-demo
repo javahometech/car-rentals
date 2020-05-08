@@ -1,0 +1,26 @@
+pipeline{
+    agent none
+    
+    stages{
+        stage('Demo'){
+            agent {
+                label 'master'
+            }
+            steps{
+                sh "touch one.sh"
+                stash includes: 'one.sh', name: 'mysrc'
+                echo "Welcome to Master Slave"
+            }
+        }
+        
+        stage('Demo2'){
+            agent {
+                label 'slave-one'
+            }
+            steps{
+               unstash 'mysrc'
+               sh "ls -ltr"
+            }
+        }
+    }
+}
