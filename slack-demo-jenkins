@@ -1,0 +1,22 @@
+currentBuild.displayName = "${currentBuild.projectName}#${currentBuild.number}"
+pipeline{
+    agent any
+    
+    stages{
+        stage('Maven Package and Nexus Deploy'){
+            steps{
+                sh script: 'mvn clean hari'
+            }
+        }
+        
+    }
+    post {
+      failure {
+          slackSend channel: 'hari-devops', 
+                    message: "Hi Developer, Your ${env.JOB_NAME} Job failed, This is your build URL ${env.BUILD_URL}", 
+                    teamDomain: 'javahomecloud', 
+                    tokenCredentialId: 'slack-three'
+      }
+    }
+    
+}

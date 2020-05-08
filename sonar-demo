@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+    stages{
+        stage('Git Checkout'){
+            steps{
+                git url: 'https://github.com/javahometech/car-rentals',
+                    branch: 'master'
+            }
+        }
+        stage('Builds & Sonar') {
+          steps {
+            parallel(
+              sonarPublish: {
+                withSonarQubeEnv('sonar7') {
+                    sh 'mvn sonar:sonar'
+                }
+              },
+              mavenBuild: {
+                sh "mvn clean package"
+              }
+            )
+          }
+        }
+        stage('Quality Check'){
+            steps{
+                timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+    }
+}
