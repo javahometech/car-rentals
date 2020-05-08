@@ -2,8 +2,19 @@ pipeline{
   agent any
   stages{
     stage('Maven Build'){
+      when {
+        branch 'develop'
+      }
       steps{
         sh "mvn clean package"
+      }
+    }
+    stage('Nexus Publish'){
+      when {
+        branch 'develop'
+      }
+      steps{
+        echo "uploading artifacts to nexus"
       }
     }
     stage('Dev and Test Deploy'){
