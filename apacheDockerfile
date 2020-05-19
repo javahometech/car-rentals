@@ -1,0 +1,16 @@
+FROM ubuntu:16.04
+
+LABEL AUTHOR="Hari Kammana"
+LABEL APP_TIER="Front END"
+
+RUN apt update
+RUN apt install apache2 -y
+
+WORKDIR /var/www/html/
+
+COPY index.html .
+COPY ports.conf /etc/apache2/
+COPY 000-default.conf /etc/apache2/sites-enabled/
+EXPOSE 9090
+
+CMD apachectl -D FOREGROUND
