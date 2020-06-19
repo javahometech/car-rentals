@@ -1,0 +1,20 @@
+---
+- hosts: 172.31.3.96
+  become: True
+  tasks:
+    - name: Create Group
+      group:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - dbadmin
+        - linxadmin
+      when: ansible_os_family == "RedHat"
+
+    - name: Create Users
+      user:
+        name: "{{ item.user }}"
+        groups: "{{ item.group }}"
+      loop:
+        - { group: dbadmin, user: hari }
+        - { group: linxadmin, user: ravi }
