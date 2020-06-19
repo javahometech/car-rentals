@@ -1,0 +1,9 @@
+---
+- hosts: 172.31.3.96
+  become: True
+  tasks:
+    - name: Install git
+      apt:
+        name: git
+        state: present
+      when: ansible_os_family=="Debian"
