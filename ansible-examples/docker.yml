@@ -1,0 +1,36 @@
+---
+- hosts: webservers
+  become: True
+  tasks:
+    - name: install docker and python pip
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - docker
+        - python-pip
+      tags:
+        - install
+    - name: install docker-py
+      pip:
+        name: docker-py
+        state: present
+      tags:
+        -  install
+    - name: start and enable docker
+      service:
+        name: docker
+        state: started
+        enabled: True
+      tags:
+        - start
+        - enable
+    - name: Create and run Docker containers
+      docker_container:
+        name: myapp
+        image: kammana/nodeapp:v3
+        state: started
+        ports:
+          - 9090:8080
+      tags:
+        -  deploy
