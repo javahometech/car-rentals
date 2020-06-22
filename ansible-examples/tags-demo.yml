@@ -1,0 +1,18 @@
+---
+- hosts: webservers
+  tasks:
+    - name: task-one
+      debug:
+        msg: This is task-one
+      tags:
+        - one
+    - name: task-two
+      debug:
+        msg: This is task-two
+      tags:
+        - two
+    - name: task-three
+      debug:
+        msg: This is task-three
+      tags:
+        - three
