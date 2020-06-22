@@ -1,0 +1,9 @@
+---
+- hosts: webservers
+  serial:
+    - 10
+    - 20%
+  tasks:
+    - name: deploy to tomcat
+      debug:
+        msg: deploying war to tomcat
