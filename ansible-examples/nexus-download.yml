@@ -1,0 +1,24 @@
+---
+-  hosts: localhost
+   become: True
+   vars_files:
+     - nexus-vars.yml
+   tasks:
+     - name: install py-pip
+       yum:
+         name: python-pip
+         state: present
+     - name: install lxml
+       pip:
+         name: lxml
+         state: present
+     - name: Download maven artifacts
+       maven_artifact:
+         group_id: in.javahome
+         artifact_id: car-rentals
+         version: "{{ version }}"
+         repository_url: "{{ nexus_url }}"
+         extension: war
+         dest: ./
+         username: "{{ nexus_usr }}"
+         password: "{{ nexus_pwd }}"
