@@ -17,6 +17,8 @@ This is online app to rent your car
 
 ### Install Nexus3 on Linux
 
+
+
 ```
    sudo yum install java-1.8.0-openjdk -y
    cd /opt/
