@@ -26,5 +26,11 @@
   <build>
     <finalName>car-rentals</finalName>
   </build>
+<distributionManagement>
+	<snapshotRepository>
+		<id>nexus</id>
+		<url>http://35.154.34.156:8081/repository/car-rentals-repository/</url>
+	</snapshotRepository>
+</distributionManagement>
   
 </project>
