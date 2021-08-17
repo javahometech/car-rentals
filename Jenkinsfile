@@ -58,10 +58,14 @@ pipeline {
         //     }
         //  }
           stage('tomcat dev') {
-            steps {
-                echo "this is jus passing"
-                // Uploaded: http://35.154.34.156:8081/repository/car-rentals-repository/in/javahome/car-rentals/1.0-SNAPSHOT/maven-metadata.xml (766 B at 5.4 KB/sec)
-            //   sh 'mvn deploy'
+            steps {     
+                sshagent(['tomcat-dev']) {
+                    // copy war file to tomcat dev
+                    sh "scp -o StrictHostKeyChecking=no target/car-rentals.war ec2-user@172.31.36.112:/opt/tomcat8/webapps/"
+                    sh "ssh ec2-user@172.31.36.112 service tomcat stop"
+                    sh "ssh ec2-user@172.31.36.112 service tomcat start"
+                    }
+                }
             }
          }
          
