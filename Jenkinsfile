@@ -3,6 +3,10 @@ pipeline{
     tools {
       maven 'maven3'
     }
+    parameters {
+      booleanParam description: 'Skip test cases?', name: 'skipTest'
+    }
+
     stages{
         
         stage('Maven Build'){
@@ -10,7 +14,8 @@ pipeline{
                 branch 'develop'
             }
             steps{
-                sh "mvn clean package"
+                
+                sh "mvn clean package -DskipTests=${params.skipTest}"
             }
         }  
         stage('upload artifact to nexus'){
@@ -44,6 +49,7 @@ pipeline{
                 branch 'master'
             }
             steps{
+                echo "skipTests is ${params.skipTest}"
                 echo "deploying to prod"
             }
        }
