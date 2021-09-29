@@ -49,7 +49,7 @@ pipeline{
                 branch 'master'
             }
             steps{
-                echo params.skipTest
+                echo "skipTests is ${params.skipTest}"
                 echo "deploying to prod"
             }
        }
