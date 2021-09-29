@@ -4,10 +4,11 @@ pipeline{
       maven 'maven3'
     }
     stages{
-        when {
-            branch 'develop'
-        }
+        
         stage('Maven Build'){
+            when {
+                branch 'develop'
+            }
             steps{
                 sh "mvn clean package"
             }
