@@ -1,9 +1,15 @@
 pipeline{
     agent any
+    tools {
+      maven 'maven3'
+    }
     stages{
-        stage('Demo'){
+        when {
+            branch 'develop'
+        }
+        stage('Maven Build'){
             steps{
-                echo "Hello Jenkins, This is nice...."
+                sh "mvn clean package"
             }
         }  
     } 
