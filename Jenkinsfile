@@ -14,6 +14,7 @@ pipeline{
                 branch 'develop'
             }
             steps{
+                echo params.skipTest
                 sh "mvn clean package"
             }
         }  
