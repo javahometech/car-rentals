@@ -14,7 +14,7 @@ pipeline{
                 branch 'develop'
             }
             steps{
-                echo params.skipTest
+                
                 sh "mvn clean package"
             }
         }  
@@ -49,6 +49,7 @@ pipeline{
                 branch 'master'
             }
             steps{
+                echo params.skipTest
                 echo "deploying to prod"
             }
        }
