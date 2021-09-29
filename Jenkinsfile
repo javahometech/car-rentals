@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('Demo'){
             when {
-                branch 'release'
+                expression { BRANCH_NAME ==~ /(release|master)/ }
             }
             steps{
                 echo "Hello Jenkins, This is nice"
