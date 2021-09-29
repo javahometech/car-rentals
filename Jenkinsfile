@@ -3,6 +3,10 @@ pipeline{
     tools {
       maven 'maven3'
     }
+    parameters {
+      booleanParam description: 'Skip test cases?', name: 'skipTest'
+    }
+
     stages{
         
         stage('Maven Build'){
